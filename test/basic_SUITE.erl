@@ -3,24 +3,24 @@
 -include_lib("common_test/include/ct.hrl").
 -include_lib("stdlib/include/assert.hrl").
 
-% -export([all/0]).
-% -export([fib_data_tests/1, dist_power_data_tests/1]).
+-export([all/0]).
+-export([sum_bigint_tests/1, triangle_tests/1]).
 
 all() ->
-    [fib_data_tests, dist_power_data_tests].
+    [sum_bigint_tests, triangle_tests].
 
-fib_data_tests(_) ->
-    fib_regular_case(4613732).
+sum_bigint_tests(_) ->
+    sum_bigint_test_cases(5537376230).
 
-dist_power_data_tests(_) ->
-    dist_power_regular_case(9183).
+triangle_tests(_) ->
+    triangle_test_cases(1074).
 
-dist_power_regular_case(Expected) ->
-    ?assertEqual(Expected, distinct_powers_map:count_distinct_terms()),
-    ?assertEqual(Expected, distinct_powers:count_distinct_terms()).
+triangle_test_cases(Expected) ->
+    ?assertEqual(Expected, triangle:main()).
 
-fib_regular_case(Expected) ->
-    ?assertEqual(Expected, fib_even_module:sum_even_fib()),
-    ?assertEqual(Expected, fib_even_stream:sum_even_fib()),
-    ?assertEqual(Expected, fib_even_monolith_tail:sum_even_fib()),
-    ?assertEqual(Expected, fib_even_monolith_recursion:sum_even_fib()).
+sum_bigint_test_cases(Expected) ->
+    ?assertEqual(Expected, first:main()),
+    ?assertEqual(Expected, sum_monolith_recursion:main()),
+    ?assertEqual(Expected, sum_monolith_tail_recursion:main()),
+    ?assertEqual(Expected, sum_module:main()),
+    ?assertEqual(Expected, sum_stream:main()).

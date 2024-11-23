@@ -1,4 +1,4 @@
--module(first).
+-module(sum_monolith_recursion).
 
 -export([main/0]).
 
