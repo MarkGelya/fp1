@@ -2,15 +2,13 @@
 
 -export([main/0]).
 
--import(string, [substring/3]).
-
 sum() ->
     Sum = sum2(stream(), 0, 1, 100),
     Sum.
 
 stream() -> fun () -> next(1) end.
 
-get_first_10_digits(N) when is_integer(N), N >= 0 ->
+get_first_ten_digits(N) when is_integer(N), N >= 0 ->
     Str = integer_to_list(N),
     First10 = lists:sublist(Str, min(10, length(Str))),
     list_to_integer(First10).
@@ -128,6 +126,6 @@ sum2(Stream, Acc, Counter, Max) ->
 
 main() ->
     Res = sum(),
-    get_first_10_digits(Res).
+    get_first_ten_digits(Res).
 %     io:format("~s~n",
 %               [string:sub_string(integer_to_list(Res), 1, 10)]).

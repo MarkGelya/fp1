@@ -2,12 +2,10 @@
 
 -export([main/0]).
 
--import(string, [substring/3]).
-
 sum([]) -> 0;
 sum([Head | Tail]) -> Head + sum(Tail).
 
-get_first_10_digits(N) when is_integer(N), N >= 0 ->
+get_first_ten_digits(N) when is_integer(N), N >= 0 ->
     Str = integer_to_list(N),
     First10 = lists:sublist(Str, min(10, length(Str))),
     list_to_integer(First10).
@@ -115,6 +113,6 @@ main() ->
          20849603980134001723930671666823555245252804609722,
          53503534226472524250874054075591789781264330331690],
     Res = sum(Numbers),
-    get_first_10_digits(Res).
+    get_first_ten_digits(Res).
 %     io:format("~s~n",
 %               [string:sub_string(integer_to_list(Res), 1, 10)]).
