@@ -7,6 +7,11 @@
 sum([]) -> 0;
 sum([Head | Tail]) -> Head + sum(Tail).
 
+get_first_10_digits(N) when is_integer(N), N >= 0 ->
+    Str = integer_to_list(N),
+    First10 = lists:sublist(Str, min(10, length(Str))),
+    list_to_integer(First10).
+
 main() ->
     Numbers =
         [37107287533902102798797998220837590246510135740250,
@@ -110,5 +115,6 @@ main() ->
          20849603980134001723930671666823555245252804609722,
          53503534226472524250874054075591789781264330331690],
     Res = sum(Numbers),
-    io:format("~s~n",
-              [string:sub_string(integer_to_list(Res), 1, 10)]).
+    get_first_10_digits(Res).
+%     io:format("~s~n",
+%               [string:sub_string(integer_to_list(Res), 1, 10)]).
