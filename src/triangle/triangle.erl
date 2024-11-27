@@ -80,5 +80,4 @@ main() ->
                  60,
                  04,
                  23]],
-    io:format("~w~n",
-              [max_el_of_list(sum_triangle(Triangle))]).
+    max_el_of_list(sum_triangle(Triangle)).

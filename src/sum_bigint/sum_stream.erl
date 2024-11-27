@@ -10,6 +10,11 @@ sum() ->
 
 stream() -> fun () -> next(1) end.
 
+get_first_10_digits(N) when is_integer(N), N >= 0 ->
+    Str = integer_to_list(N),
+    First10 = lists:sublist(Str, min(10, length(Str))),
+    list_to_integer(First10).
+
 next(A) ->
     Numbers =
         [37107287533902102798797998220837590246510135740250,
@@ -123,5 +128,6 @@ sum2(Stream, Acc, Counter, Max) ->
 
 main() ->
     Res = sum(),
-    io:format("~s~n",
-              [string:sub_string(integer_to_list(Res), 1, 10)]).
+    get_first_10_digits(Res).
+%     io:format("~s~n",
+%               [string:sub_string(integer_to_list(Res), 1, 10)]).

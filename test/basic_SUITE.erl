@@ -15,12 +15,12 @@ sum_bigint_tests(_) ->
 triangle_tests(_) ->
     triangle_test_cases(1074).
 
-triangle_test_cases(Expected) ->
-    ?assertEqual(Expected, triangle:main()).
-
 sum_bigint_test_cases(Expected) ->
     ?assertEqual(Expected, first:main()),
     ?assertEqual(Expected, sum_monolith_recursion:main()),
     ?assertEqual(Expected, sum_monolith_tail_recursion:main()),
     ?assertEqual(Expected, sum_module:main()),
     ?assertEqual(Expected, sum_stream:main()).
+
+triangle_test_cases(Expected) ->
+    ?assertEqual(Expected, triangle:main()).
